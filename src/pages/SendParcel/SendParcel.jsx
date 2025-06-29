@@ -11,7 +11,7 @@ const generateTrackingID = () => {
     return `PCL-${datePart}-${rand}`;
 };
 
-const SendParcel = () => {
+const  SendParcel = () => {
     const {
         register,
         handleSubmit,
@@ -132,7 +132,7 @@ const SendParcel = () => {
 
                 {/* Parcel Info */}
                 <div className="border p-4 rounded-xl shadow-md space-y-4">
-                    <h3 className="font-semibold text-xl">Parcel Info</h3>
+                    <h3 className="font-semibold text-xl ">Parcel Info</h3>
                     <div className="space-y-4">
                         {/* Parcel Name */}
                         <div>
