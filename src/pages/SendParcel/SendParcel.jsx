@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -8,6 +8,7 @@ const generateTrackingID = () => {
     const date = new Date();
     const datePart = date.toISOString().split("T")[0].replace(/-/g, "");
     const rand = Math.random().toString(36).substring(2, 7).toUpperCase();
+    
     return `PCL-${datePart}-${rand}`;
 };
 
@@ -20,6 +21,7 @@ const  SendParcel = () => {
     } = useForm();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const navigate =useNavigate();
 
     const serviceCenters = useLoaderData();
     // Extract unique regions
@@ -114,6 +116,7 @@ const  SendParcel = () => {
                                 timer: 1500,
                                 showConfirmButton: false,
                             });
+                            navigate('/dashboard/myParcels')
                         }
                     })
                 
