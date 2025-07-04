@@ -14,6 +14,10 @@ import BeARider from "../pages/Dashboard/BeARider/BeARider";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import PendingRiders from "../pages/Dashboard/PendingRiders/PendingRiders";
 import ActiveRiders from "../pages/Dashboard/ActiveRiders/ActiveRiders";
+import MakeAdmin from "../pages/Dashboard/MakeAdmin/MakeAdmin";
+import AdminRoute from "../routes/AdminRoute";
+import Forbidden from "../pages/Forbidden/Forbidden";
+import AssignRider from "../pages/Dashboard/AssignRider/AssignRider";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +32,10 @@ export const router = createBrowserRouter([
         path: 'coverage',
         Component: Coverage,
         loader: () => fetch('./serviceCenter.json')
+      },
+      {
+        path:'forbidden',
+        Component:Forbidden
       },
       {
         path: 'sendParcel',
@@ -74,13 +82,21 @@ export const router = createBrowserRouter([
         Component:PaymentHistory
       },
       {
+        path:'assign-rider',
+        element:<AdminRoute><AssignRider/></AdminRoute>
+      },
+      {
         path:'active-riders',
-        Component:ActiveRiders
+         element:<AdminRoute><ActiveRiders/></AdminRoute>
       },
       {
         path:'pending-riders',
-        Component: PendingRiders
-      }
+         element:<AdminRoute><PendingRiders/></AdminRoute>
+      },
+      {
+        path:'makeAdmin',
+        element:<AdminRoute><MakeAdmin/></AdminRoute>
+      },
     ]
   }
 ]);
